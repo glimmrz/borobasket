@@ -4,10 +4,13 @@
 	import ProductCard from '../../Components/ui/Product-card.svelte';
 	import Section from '../../Components/ui/Section.svelte';
 	import Category from '../../Components/ui/Category.svelte';
+	import Slider from '../../Components/ui/Slider.svelte';
 </script>
 
 <main>
 	<Container>
+		<!-- Slider -->
+		<Slider />
 		<!-- Categories -->
 		<div class="categories">
 			{#each categories as cat}
