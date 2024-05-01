@@ -1,6 +1,7 @@
 <script>
 	import Container from './Container.svelte';
 	import Hamburger from './Hamburger.svelte';
+	import Icon from './Icon.svelte';
 	import Input from './Input.svelte';
 	import Logo from './Logo.svelte';
 </script>
@@ -19,7 +20,7 @@
 			<div class="cart-wrapper">
 				<div class="col">
 					<div class="cart">
-						<img src="shoppingbag.png" alt="" class="cart-image" />
+						<Icon src={'shoppingbag.png'} alt />
 						<span class="total-number">10</span>
 					</div>
 					<span class="total-amount">৳ 0</span>
@@ -51,12 +52,15 @@
 		flex: 3;
 		background-color: #fff;
 		display: none;
+		border-radius: var(--radius);
+		border: 2px solid var(--blue);
+		overflow: hidden;
 	}
 
 	.search-icon {
 		width: 35px;
 		object-fit: contain;
-		padding: calc(var(--gap) / 2);
+		padding: var(--gap);
 		cursor: pointer;
 	}
 
