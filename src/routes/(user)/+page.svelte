@@ -1,11 +1,19 @@
 <script>
+	import { categories } from '../../lib/static.js';
 	import Container from '../../Components/ui/Container.svelte';
 	import ProductCard from '../../Components/ui/Product-card.svelte';
 	import Section from '../../Components/ui/Section.svelte';
+	import Category from '../../Components/ui/Category.svelte';
 </script>
 
 <main>
 	<Container>
+		<!-- Categories -->
+		<div class="categories">
+			{#each categories as cat}
+				<Category item={cat} />
+			{/each}
+		</div>
 		<Section sectionTitle="popular products our customers loved" sectionicon="title_popular.png">
 			<div class="popular-products">
 				<ProductCard />
@@ -30,6 +38,12 @@
 </main>
 
 <style>
+	.categories {
+		display: flex;
+		gap: var(--gap);
+		overflow-x: scroll;
+	}
+
 	.popular-products {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
