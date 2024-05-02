@@ -1,9 +1,11 @@
 <script>
 	export let label;
 	export let icon;
+	export let full;
+	export let handleAction;
 </script>
 
-<button class="primary">
+<button class="primary {full ? 'w-full' : ''}" on:click={handleAction}>
 	{#if icon}
 		<img src={icon} alt="" />
 	{/if}
@@ -21,6 +23,7 @@
 		border-radius: var(--radius);
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		gap: var(--gap);
 		cursor: pointer;
 	}
@@ -34,5 +37,9 @@
 	.primary {
 		background-color: var(--blue-accent);
 		color: #fff;
+	}
+
+	.w-full {
+		width: 100%;
 	}
 </style>

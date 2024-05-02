@@ -9,8 +9,6 @@
 			index++;
 		}
 	}, 3000);
-
-	$: console.log(index);
 </script>
 
 <div class="slider-wrapper">

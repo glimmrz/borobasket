@@ -1,6 +1,12 @@
 <script>
+	import { cart } from '../../store';
+	export let item;
 	import Button from './Button.svelte';
 	import Container from './Container.svelte';
+
+	const handleClick = () => {
+		cart.addItem(item);
+	};
 </script>
 
 <div class="product-card">
@@ -9,15 +15,15 @@
 			<img src="cat.jpg" alt="" class="product-image" />
 		</div>
 		<div class="details">
-			<a href="">
-				<h3 class="title">Rok Dish Washing Liquid(Free Scotch Brite)</h3>
+			<a href="/">
+				<h3 class="title">{item?.title}</h3>
 			</a>
-			<h3 class="weight">500gm</h3>
+			<h3 class="weight">{item?.weight}gm</h3>
 			<span class="price-wrapepr">
-				<h4 class="price">20.00</h4>
-				<h3 class="discounted-price">12.00</h3>
+				<h4 class="price">{item?.price}</h4>
+				<h3 class="discounted-price">{item?.discountedPrice}</h3>
 			</span>
-			<Button icon="basket.png" label="add to basket" />
+			<Button icon="basket.png" label="add to basket" handleAction={handleClick} />
 		</div>
 	</Container>
 </div>
@@ -29,6 +35,7 @@
 		border-radius: var(--radius);
 		overflow: hidden;
 		border: 2px solid transparent;
+		cursor: pointer;
 	}
 
 	.product-card:hover {

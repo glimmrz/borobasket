@@ -1,5 +1,5 @@
 <script>
-	import { categories } from '../../lib/static.js';
+	import { categories, products } from '../../lib/static.js';
 	import Container from '../../Components/ui/Container.svelte';
 	import ProductCard from '../../Components/ui/Product-card.svelte';
 	import Section from '../../Components/ui/Section.svelte';
@@ -19,22 +19,16 @@
 		</div>
 		<Section sectionTitle="popular products our customers loved" sectionicon="title_popular.png">
 			<div class="popular-products">
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
+				{#each products as product}
+					<ProductCard item={product} />
+				{/each}
 			</div>
 		</Section>
 		<Section sectionTitle="offers" sectionicon="title_offers.png">
 			<div class="popular-products">
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
+				{#each products as product}
+					<ProductCard item={product} />
+				{/each}
 			</div>
 		</Section>
 	</Container>
