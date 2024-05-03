@@ -1,17 +1,29 @@
 import { writable } from 'svelte/store';
+import { browser } from '$app/environment';
 
 const initialState = {
 	items: [],
 	total: 0
 };
 
+function getLocal() {
+	if (!browser) return;
+
+	let items = JSON.parse(localStorage.getItem('cart'));
+
+	return items !== null ? items : initialState;
+}
+
+const data = browser ? getLocal() : initialState;
+
 function createCart() {
-	const { subscribe, set, update } = writable(initialState);
+	const { subscribe, set, update } = writable(data);
 
 	return {
 		subscribe,
 		addItem: (product) =>
 			update((state) => {
+				if (!browser) return;
 				const index = state.items.findIndex((item) => item.id === product.id);
 
 				if (index !== -1) {
@@ -21,7 +33,7 @@ function createCart() {
 				}
 
 				state.total += product.price;
-
+				localStorage.setItem('cart', JSON.stringify(state));
 				return state;
 			}),
 		removeItem: (productId) =>
