@@ -81,4 +81,4 @@ function createCart() {
 	};
 }
 
-export const cart = createCart();
+export const useCart = createCart();

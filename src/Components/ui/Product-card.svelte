@@ -1,11 +1,11 @@
 <script>
-	import { cart } from '../../store';
+	import { useCart } from '../../stores/useCart';
 	export let item;
 	import Button from './Button.svelte';
 	import Container from './Container.svelte';
 
 	const handleClick = () => {
-		cart.addItem(item);
+		useCart.addItem(item);
 	};
 </script>
 

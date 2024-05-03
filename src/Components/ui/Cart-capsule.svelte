@@ -1,13 +1,13 @@
 <script>
-	import { cart } from '../../store';
+	import { useCart } from '../../stores/useCart';
 	export let product;
 
 	function handleInc() {
-		cart.increment(product);
+		useCart.increment(product);
 	}
 
 	function handleDec() {
-		cart.decrement(product);
+		useCart.decrement(product);
 	}
 </script>
 

@@ -1,5 +1,5 @@
 <script>
-	import { cart } from '../../store';
+	import { useCart } from '../../stores/useCart';
 	import Icon from './Icon.svelte';
 	import Button from './Button.svelte';
 	import CartItem from './Cart-item.svelte';
@@ -24,7 +24,7 @@
 			<div class="bottom-content">
 				<div class="cart-total">
 					<p>sub total</p>
-					<p>${$cart.total}</p>
+					<p>${$useCart.total}</p>
 				</div>
 				<div class="cart-total">
 					<p>delivery charge</p>
@@ -32,7 +32,7 @@
 				</div>
 				<div class="cart-total">
 					<h6>grand total</h6>
-					<p>${$cart.total}</p>
+					<p>${$useCart.total}</p>
 				</div>
 				<Button label="register / login" full />
 			</div>

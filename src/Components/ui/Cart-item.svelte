@@ -1,5 +1,5 @@
 <script>
-	import { cart } from '../../store';
+	import { useCart } from '../../stores/useCart';
 	import Button from './Button.svelte';
 	import CartCapsule from './Cart-capsule.svelte';
 
@@ -10,7 +10,7 @@
 
 <section>
 	<ul>
-		{#each $cart.items as item (item.id)}
+		{#each $useCart.items as item (item.id)}
 			<li>
 				<span>{item.title} - {item.quantity} x ${item.price.toFixed(2)}</span>
 				<CartCapsule product={item} />
@@ -18,5 +18,5 @@
 			</li>
 		{/each}
 	</ul>
-	<Button label="clear cart" handleAction={cart.clear} />
+	<Button label="clear cart" handleAction={useCart.clear} />
 </section>
