@@ -17,7 +17,7 @@ function getLocal() {
 const data = browser ? getLocal() : initialState;
 
 function createCart() {
-	const { subscribe, set, update } = writable(data);
+	const { subscribe, update } = writable(data);
 
 	return {
 		subscribe,
@@ -38,17 +38,21 @@ function createCart() {
 			}),
 		removeItem: (productId) =>
 			update((state) => {
+				if (!browser) return;
+
 				const index = state.items.findIndex((item) => item.id === productId);
 
 				if (index !== -1) {
 					state.total -= state.items[index].price * state.items[index].quantity;
 					state.items.splice(index, 1);
 				}
-
+				localStorage.setItem('cart', JSON.stringify(state));
 				return state;
 			}),
 		increment: (product) =>
 			update((state) => {
+				if (!browser) return;
+
 				const index = state.items.findIndex((item) => item.id === product.id);
 
 				if (index !== -1) {
@@ -56,10 +60,13 @@ function createCart() {
 				}
 
 				state.total += product.price;
+				localStorage.setItem('cart', JSON.stringify(state));
 				return state;
 			}),
 		decrement: (product) =>
 			update((state) => {
+				if (!browser) return;
+
 				const index = state.items.findIndex((item) => item.id === product.id);
 
 				if (index !== -1) {
@@ -71,12 +78,8 @@ function createCart() {
 				}
 
 				state.total -= product.price;
+				localStorage.setItem('cart', JSON.stringify(state));
 				return state;
-			}),
-		clear: () =>
-			set({
-				items: [],
-				total: 0
 			})
 	};
 }

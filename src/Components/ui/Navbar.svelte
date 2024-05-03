@@ -1,9 +1,15 @@
 <script>
+	import { useCartSidebar } from '../../stores/useCartSidebar';
+	import { useCart } from '../../stores/useCart';
 	import Container from './Container.svelte';
 	import Hamburger from './Hamburger.svelte';
 	import Icon from './Icon.svelte';
 	import Input from './Input.svelte';
 	import Logo from './Logo.svelte';
+
+	let quantity;
+
+	$: quantity = $useCart.items.reduce((a, b) => a + b.quantity, 0);
 </script>
 
 <nav>
@@ -18,12 +24,12 @@
 				<img src="search.png" alt="search" class="search-icon" />
 			</div>
 			<div class="cart-wrapper">
-				<div class="col">
+				<div class="col" on:click={useCartSidebar.onOpen}>
 					<div class="cart">
 						<Icon src={'shoppingbag.png'} alt />
-						<span class="total-number">10</span>
+						<span class="total-number">{quantity}</span>
 					</div>
-					<span class="total-amount">৳ 0</span>
+					<span class="total-amount">৳ {$useCart.total}</span>
 				</div>
 			</div>
 		</div>

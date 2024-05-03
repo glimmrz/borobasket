@@ -4,7 +4,7 @@
 	import CartCapsule from './Cart-capsule.svelte';
 
 	function handleRemove(id) {
-		cart.removeItem(id);
+		useCart.removeItem(id);
 	}
 </script>
 
@@ -18,5 +18,4 @@
 			</li>
 		{/each}
 	</ul>
-	<Button label="clear cart" handleAction={useCart.clear} />
 </section>

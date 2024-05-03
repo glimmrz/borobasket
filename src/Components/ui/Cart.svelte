@@ -1,11 +1,12 @@
 <script>
+	import { useCartSidebar } from '../../stores/useCartSidebar';
 	import { useCart } from '../../stores/useCart';
 	import Icon from './Icon.svelte';
 	import Button from './Button.svelte';
 	import CartItem from './Cart-item.svelte';
 </script>
 
-<div class="cart">
+<div class="cart" style="transform: translateX({$useCartSidebar.isOpen ? '0' : '800'}px)">
 	<div class="cart-wrapper">
 		<!-- Cart header -->
 		<div class="cart-top">
@@ -13,7 +14,7 @@
 				<Icon src="groceries.png" />
 				<span>my basket items</span>
 			</div>
-			<Icon src="close.png" />
+			<Icon src="close.png" handleAction={useCartSidebar.onClose} />
 		</div>
 		<!-- Cart items -->
 		<div>
@@ -50,6 +51,7 @@
 		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 		background-color: #fff;
 		z-index: 5;
+		transition: all 0.5s ease;
 	}
 
 	.cart-wrapper {
