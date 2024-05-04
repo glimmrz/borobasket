@@ -18,8 +18,11 @@
 		</div>
 		<!-- Cart items -->
 		<div>
-			<CartItem />
+			{#each $useCart.items as item (item.id)}
+				<CartItem {item} />
+			{/each}
 		</div>
+
 		<!-- Cart total -->
 		<div class="cart-bottom">
 			<div class="bottom-content">
