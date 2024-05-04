@@ -2,15 +2,17 @@
 	export let item;
 </script>
 
-<div class="category" style="background-color: {item.color};">
-	<img src={item.image} alt="" />
-	<h6>{item.label}</h6>
+<div class="category" style="background-color: {item?.color};">
+	<img src={item?.image} alt="" />
+	<a href="category/{item?.label}">
+		<h6>{item?.label}</h6>
+	</a>
 </div>
 
 <style>
 	.category {
 		height: 135px;
-		min-width: 185px;
+		min-width: 160px;
 		border-radius: var(--radius);
 		display: flex;
 		flex-direction: column;

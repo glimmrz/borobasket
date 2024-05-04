@@ -1,5 +1,7 @@
 <script>
 	import { categories, products } from '../../lib/static.js';
+	import offer_icon from '$lib/assets/title_offers.png';
+	import popular_icon from '$lib/assets/title_popular.png';
 	import Container from '../../Components/ui/Container.svelte';
 	import ProductCard from '../../Components/ui/Product-card.svelte';
 	import Section from '../../Components/ui/Section.svelte';
@@ -17,14 +19,14 @@
 				<Category item={cat} />
 			{/each}
 		</div>
-		<Section sectionTitle="popular products our customers loved" sectionicon="title_popular.png">
+		<Section sectionTitle="popular products our customers loved" sectionicon={popular_icon}>
 			<div class="popular-products">
 				{#each products as product}
 					<ProductCard item={product} />
 				{/each}
 			</div>
 		</Section>
-		<Section sectionTitle="offers" sectionicon="title_offers.png">
+		<Section sectionTitle="offers" sectionicon={offer_icon}>
 			<div class="popular-products">
 				{#each products as product}
 					<ProductCard item={product} />

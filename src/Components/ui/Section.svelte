@@ -7,7 +7,9 @@
 
 <section>
 	<div class="section-header">
-		<Icon src={sectionicon} alt={sectionTitle} />
+		{#if sectionicon}
+			<Icon src={sectionicon} alt={sectionTitle} />
+		{/if}
 		<h2>{sectionTitle}</h2>
 	</div>
 	<div class="section-content">

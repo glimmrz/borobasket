@@ -1,8 +1,10 @@
 <script>
 	import { useCart } from '../../stores/useCart';
-	export let item;
+	import basket from '$lib/assets/basket.png';
 	import Button from './Button.svelte';
 	import Container from './Container.svelte';
+
+	export let item;
 
 	const handleClick = () => {
 		useCart.addItem(item);
@@ -12,7 +14,7 @@
 <div class="product-card">
 	<Container>
 		<div class="image-wrapper">
-			<img src="cat.jpg" alt="" class="product-image" />
+			<img src={item.image} alt="" class="product-image" />
 		</div>
 		<div class="details">
 			<a href="/">
@@ -20,10 +22,10 @@
 			</a>
 			<h3 class="weight">{item?.weight}gm</h3>
 			<span class="price-wrapepr">
-				<h4 class="price">{item?.price}</h4>
-				<h3 class="discounted-price">{item?.discountedPrice}</h3>
+				<h4 class="price">৳ {item?.price}</h4>
+				<h3 class="discounted-price">৳ {item?.discountedPrice}</h3>
 			</span>
-			<Button icon="basket.png" label="add to basket" handleAction={handleClick} />
+			<Button icon={basket} label="add to basket" handleAction={handleClick} />
 		</div>
 	</Container>
 </div>
@@ -43,14 +45,18 @@
 	}
 
 	.image-wrapper {
-		max-width: 210px;
-		max-height: 210px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.product-image {
 		height: 100%;
 		width: 100%;
-		object-fit: contain;
+		object-fit: cover;
+
+		max-height: 180px;
+		max-width: 180px;
 	}
 
 	.details {

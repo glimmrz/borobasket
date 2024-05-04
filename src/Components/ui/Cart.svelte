@@ -1,6 +1,8 @@
 <script>
 	import { useCartSidebar } from '../../stores/useCartSidebar';
 	import { useCart } from '../../stores/useCart';
+	import groceries from '$lib/assets/groceries.png';
+	import close from '$lib/assets/close.png';
 	import Icon from './Icon.svelte';
 	import Button from './Button.svelte';
 	import CartItem from './Cart-item.svelte';
@@ -11,13 +13,13 @@
 		<!-- Cart header -->
 		<div class="cart-top">
 			<div class="cart-indicator">
-				<Icon src="groceries.png" />
+				<Icon src={groceries} />
 				<span>my basket items</span>
 			</div>
-			<Icon src="close.png" handleAction={useCartSidebar.onClose} />
+			<Icon src={close} handleAction={useCartSidebar.onClose} />
 		</div>
 		<!-- Cart items -->
-		<div>
+		<div class="cart-content">
 			{#each $useCart.items as item (item.id)}
 				<CartItem {item} />
 			{/each}
@@ -28,15 +30,15 @@
 			<div class="bottom-content">
 				<div class="cart-total">
 					<p>sub total</p>
-					<p>${$useCart.total}</p>
+					<p>৳ {$useCart.total}</p>
 				</div>
 				<div class="cart-total">
 					<p>delivery charge</p>
-					<p>00</p>
+					<p>৳ 00</p>
 				</div>
 				<div class="cart-total">
 					<h6>grand total</h6>
-					<p>${$useCart.total}</p>
+					<p>৳ {$useCart.total}</p>
 				</div>
 				<Button label="register / login" full />
 			</div>
@@ -79,6 +81,10 @@
 		text-transform: uppercase;
 		font-weight: 700;
 		color: var(--secondary);
+	}
+
+	.cart-content {
+		padding: var(--gap);
 	}
 
 	.cart-bottom {

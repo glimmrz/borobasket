@@ -1,6 +1,8 @@
 <script>
 	import { useCartSidebar } from '../../stores/useCartSidebar';
 	import { useCart } from '../../stores/useCart';
+	import shoppingbag from '$lib/assets/shoppingbag.png';
+	import search from '$lib/assets/search.png';
 	import Container from './Container.svelte';
 	import Hamburger from './Hamburger.svelte';
 	import Icon from './Icon.svelte';
@@ -21,12 +23,12 @@
 			</div>
 			<div class="search-bar">
 				<Input full />
-				<img src="search.png" alt="search" class="search-icon" />
+				<img src={search} alt="search" class="search-icon" />
 			</div>
 			<div class="cart-wrapper">
 				<div class="col" on:click={useCartSidebar.onOpen}>
 					<div class="cart">
-						<Icon src={'shoppingbag.png'} alt />
+						<Icon src={shoppingbag} alt="shopping bag" />
 						<span class="total-number">{quantity}</span>
 					</div>
 					<span class="total-amount">৳ {$useCart.total}</span>
@@ -87,11 +89,6 @@
 
 	.cart {
 		position: relative;
-	}
-
-	.cart-image {
-		width: 30px;
-		object-fit: contain;
 	}
 
 	.total-number {
